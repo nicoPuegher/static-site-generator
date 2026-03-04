@@ -15,3 +15,9 @@ class TextNode:
         self.text = text
         self.text_type = TextType[text_type]
         self.url = url
+
+    def __eq__(self, other):
+        equal_text = self.text == other.text
+        equal_text_type = self.text_type == other.text_type
+        equal_url = self.url == other.url
+        return equal_text and equal_text_type and equal_url
