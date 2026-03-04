@@ -21,3 +21,6 @@ class TextNode:
         equal_text_type = self.text_type == other.text_type
         equal_url = self.url == other.url
         return equal_text and equal_text_type and equal_url
+
+    def __repr__(self):
+        return f"TextNode({self.text}, {self.text_type}, {self.url})"
