@@ -1,5 +1,9 @@
+from textnode import TextNode
+
+
 def main():
-    print("Hello, world!")
+    node = TextNode("This is some anchor text", "LINK", "www.google.com")
+    print(node)
 
 
 main()
