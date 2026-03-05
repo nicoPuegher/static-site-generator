@@ -31,6 +31,13 @@ class TestHTMLNode(unittest.TestCase):
         node2 = HTMLNode("h1", "Hello, World!", [], {"class": "paragraph"})
         self.assertNotEqual(node, node2)
 
+    def test_defaults_to_none(self):
+        node = HTMLNode()
+        self.assertIsNone(node.tag)
+        self.assertIsNone(node.value)
+        self.assertIsNone(node.children)
+        self.assertIsNone(node.props)
+
 
 if __name__ == "__main__":
     unittest.main()
