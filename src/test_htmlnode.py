@@ -26,6 +26,11 @@ class TestHTMLNode(unittest.TestCase):
         node2 = HTMLNode("h1", "Hello, World!", [child], {"class": "title"})
         self.assertNotEqual(node, node2)
 
+    def test_props_eq(self):
+        node = HTMLNode("h1", "Hello, World!", [], {"class": "title"})
+        node2 = HTMLNode("h1", "Hello, World!", [], {"class": "paragraph"})
+        self.assertNotEqual(node, node2)
+
 
 if __name__ == "__main__":
     unittest.main()
