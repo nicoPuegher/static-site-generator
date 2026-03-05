@@ -21,3 +21,6 @@ class HTMLNode:
         equal_children = self.children == other.children
         equal_props = self.props == other.props
         return equal_tag and equal_value and equal_children and equal_props
+
+    def __repr__(self):
+        return f"HTMLNode({self.tag}, {self.value}, {self.children}, {self.props})"
