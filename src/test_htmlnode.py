@@ -38,6 +38,11 @@ class TestHTMLNode(unittest.TestCase):
         self.assertIsNone(node.children)
         self.assertIsNone(node.props)
 
+    def test_props_to_html(self):
+        node = HTMLNode(None, None, None, {"id": "my_id", "class": "my_class"})
+        props_string = ' id="my_id" class="my_class"'
+        self.assertEqual(node.props_to_html(), props_string)
+
 
 if __name__ == "__main__":
     unittest.main()
