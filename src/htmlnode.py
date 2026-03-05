@@ -7,3 +7,10 @@ class HTMLNode:
 
     def to_html(self):
         raise NotImplementedError()
+
+    def props_to_html(self):
+        res = ""
+        if self.props:
+            for key, value in self.props.items():
+                res += f' {key}="{value}"'
+        return res
