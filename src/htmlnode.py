@@ -14,3 +14,10 @@ class HTMLNode:
             for key, value in self.props.items():
                 res += f' {key}="{value}"'
         return res
+
+    def __eq__(self, other):
+        equal_tag = self.tag == other.tag
+        equal_value = self.value == other.value
+        equal_children = self.children == other.children
+        equal_props = self.props == other.props
+        return equal_tag and equal_value and equal_children and equal_props
