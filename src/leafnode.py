@@ -24,3 +24,6 @@ class LeafNode(HTMLNode):
         equal_value = self.value == other.value
         equal_props = self.props == other.props
         return equal_tag and equal_value and equal_props
+
+    def __repr__(self):
+        return f"LeafNode({self.tag}, {self.value}, {self.props})"
