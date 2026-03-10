@@ -11,3 +11,9 @@ class ParentNode(HTMLNode):
 
         if self.children is None:
             raise ValueError("invalid HTML: no children")
+
+        combined_children = ""
+        for child in self.children:
+            combined_children += child.to_html()
+
+        return f"<{self.tag}{self.props_to_html()}>{combined_children}</{self.tag}>"
