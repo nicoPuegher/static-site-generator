@@ -8,6 +8,10 @@ class TestLeafNode(unittest.TestCase):
         node = LeafNode("h1", "This is my title", {"class": "title"})
         self.assertEqual(node.to_html(), '<h1 class="title">This is my title</h1>')
 
+    def test_leaf_to_html_p(self):
+        node = LeafNode("p", "Hello, world!")
+        self.assertEqual(node.to_html(), "<p>Hello, world!</p>")
+
 
 if __name__ == "__main__":
     unittest.main()
