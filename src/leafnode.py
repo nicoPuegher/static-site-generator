@@ -18,3 +18,9 @@ class LeafNode(HTMLNode):
                 combined_props += f' {k}="{v}"'
 
         return f"<{self.tag}{combined_props}>{self.value}</{self.tag}>"
+
+    def __eq__(self, other):
+        equal_tag = self.tag == other.tag
+        equal_value = self.value == other.value
+        equal_props = self.props == other.props
+        return equal_tag and equal_value and equal_props
