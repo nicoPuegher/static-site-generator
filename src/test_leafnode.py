@@ -18,6 +18,15 @@ class TestLeafNode(unittest.TestCase):
             node.to_html(), '<a href="https://www.google.com">Click me!</a>'
         )
 
+    def test_leaf_to_html_span(self):
+        node = LeafNode(
+            "span", "I am a span!", {"id": "unique_span", "class": "span_primary"}
+        )
+        self.assertEqual(
+            node.to_html(),
+            '<span id="unique_span" class="span_primary">I am a span!</span>',
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
