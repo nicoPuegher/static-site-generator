@@ -9,4 +9,9 @@ def split_nodes_delimeter(old_nodes, delimeter, text_type):
             new_nodes.append(node)
             continue
 
+        parts = node.text.split(delimeter)
+
+        if len(parts) % 2 == 0:
+            raise Exception("Invalid markdown: missing closing delimeter")
+
     return new_nodes
