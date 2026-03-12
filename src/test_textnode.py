@@ -73,6 +73,11 @@ class TestTextNode(unittest.TestCase):
             {"src": "https://www.google.com", "alt": "This is an image text node"},
         )
 
+    def test_text_invalid(self):
+        node = TextNode("Invalid", "RANDOM")
+        with self.assertRaises(Exception):
+            text_node_to_html_node(node)
+
 
 if __name__ == "__main__":
     unittest.main()
