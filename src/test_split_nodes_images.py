@@ -71,6 +71,16 @@ class TestSplitNodesImages(unittest.TestCase):
             new_nodes,
         )
 
+    def test_split_no_images(self):
+        node = TextNode(
+            "Just text here",
+            TextType.TEXT,
+        )
+
+        new_nodes = split_nodes_image([node])
+
+        self.assertEqual([node], new_nodes)
+
 
 if __name__ == "__main__":
     unittest.main()
