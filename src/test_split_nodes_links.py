@@ -39,6 +39,22 @@ class TestSplitNodesLinks(unittest.TestCase):
             new_nodes,
         )
 
+    def test_split_link_at_start(self):
+        node = TextNode(
+            "[Boot](https://boot.dev) is great",
+            TextType.TEXT,
+        )
+
+        new_nodes = split_nodes_link([node])
+
+        self.assertEqual(
+            [
+                TextNode("Boot", TextType.LINK, "https://boot.dev"),
+                TextNode(" is great", TextType.TEXT),
+            ],
+            new_nodes,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
