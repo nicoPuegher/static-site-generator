@@ -92,6 +92,25 @@ class TestSplitNodesLinks(unittest.TestCase):
 
         self.assertEqual([node], new_nodes)
 
+    def test_split_links_with_text_between(self):
+        node = TextNode(
+            "Start [A](url1) middle [B](url2) end",
+            TextType.TEXT,
+        )
+
+        new_nodes = split_nodes_link([node])
+
+        self.assertEqual(
+            [
+                TextNode("Start ", TextType.TEXT),
+                TextNode("A", TextType.LINK, "url1"),
+                TextNode(" middle ", TextType.TEXT),
+                TextNode("B", TextType.LINK, "url2"),
+                TextNode(" end", TextType.TEXT),
+            ],
+            new_nodes,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
