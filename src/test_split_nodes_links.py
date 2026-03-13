@@ -21,6 +21,24 @@ class TestSplitNodesLinks(unittest.TestCase):
             new_nodes,
         )
 
+    def test_split_multiple_links(self):
+        node = TextNode(
+            "Go to [Google](https://google.com) and [YouTube](https://youtube.com)",
+            TextType.TEXT,
+        )
+
+        new_nodes = split_nodes_link([node])
+
+        self.assertEqual(
+            [
+                TextNode("Go to ", TextType.TEXT),
+                TextNode("Google", TextType.LINK, "https://google.com"),
+                TextNode(" and ", TextType.TEXT),
+                TextNode("YouTube", TextType.LINK, "https://youtube.com"),
+            ],
+            new_nodes,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
