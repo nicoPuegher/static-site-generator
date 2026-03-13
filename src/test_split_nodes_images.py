@@ -92,6 +92,22 @@ class TestSplitNodesImages(unittest.TestCase):
 
         self.assertEqual([node], new_nodes)
 
+    def test_images_no_spaces(self):
+        node = TextNode(
+            "![a](1.png)![b](2.png)",
+            TextType.TEXT,
+        )
+
+        new_nodes = split_nodes_image([node])
+
+        self.assertEqual(
+            [
+                TextNode("a", TextType.IMAGE, "1.png"),
+                TextNode("b", TextType.IMAGE, "2.png"),
+            ],
+            new_nodes,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
