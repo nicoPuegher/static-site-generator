@@ -21,6 +21,24 @@ class TestSplitNodesImages(unittest.TestCase):
             new_nodes,
         )
 
+    def test_split_multiple_images(self):
+        node = TextNode(
+            "Images ![one](1.png) and ![two](2.png)",
+            TextType.TEXT,
+        )
+
+        new_nodes = split_nodes_image([node])
+
+        self.assertEqual(
+            [
+                TextNode("Images ", TextType.TEXT),
+                TextNode("one", TextType.IMAGE, "1.png"),
+                TextNode(" and ", TextType.TEXT),
+                TextNode("two", TextType.IMAGE, "2.png"),
+            ],
+            new_nodes,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
