@@ -54,6 +54,19 @@ class TestMarkdownToHTML(unittest.TestCase):
             "</div>",
         )
 
+    def test_blockquote(self):
+        md = "> This is a quote with **bold** text"
+
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+
+        self.assertEqual(
+            html,
+            "<div>"
+            "<blockquote>This is a quote with <b>bold</b> text</blockquote>"
+            "</div>",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
