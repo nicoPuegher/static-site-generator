@@ -109,6 +109,31 @@ class TestMarkdownToHTML(unittest.TestCase):
             "</div>",
         )
 
+    def test_full_document(self):
+        md = (
+            "# Title\n\n"
+            "This is a paragraph with **bold** text.\n\n"
+            "- Item 1\n"
+            "- Item 2\n\n"
+            "> A quote here"
+        )
+
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+
+        self.assertEqual(
+            html,
+            "<div>"
+            "<h1>Title</h1>"
+            "<p>This is a paragraph with <b>bold</b> text.</p>"
+            "<ul>"
+            "<li>Item 1</li>"
+            "<li>Item 2</li>"
+            "</ul>"
+            "<blockquote>A quote here</blockquote>"
+            "</div>",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
