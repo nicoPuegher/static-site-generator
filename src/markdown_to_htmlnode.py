@@ -57,6 +57,13 @@ def markdown_to_html_node(markdown):
                 items.append(ParentNode("li", _text_to_children(item_text)))
             children.append(ParentNode("ul", items))
 
+        elif block_type == "ordered_list":
+            items = []
+            for line in block.split("\n"):
+                item_text = line.split(". ", 1)[1]
+                items.append(ParentNode("li", _text_to_children(item_text)))
+            children.append(ParentNode("ol", items))
+
     return ParentNode("div", children)
 
 
