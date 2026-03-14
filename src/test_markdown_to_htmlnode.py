@@ -67,6 +67,27 @@ class TestMarkdownToHTML(unittest.TestCase):
             "</div>",
         )
 
+    def test_unordered_list(self):
+        md = (
+            "- Item one with **bold**\n"
+            "- Item two with _italic_\n"
+            "- Item three with `code`"
+        )
+
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+
+        self.assertEqual(
+            html,
+            "<div>"
+            "<ul>"
+            "<li>Item one with <b>bold</b></li>"
+            "<li>Item two with <i>italic</i></li>"
+            "<li>Item three with <code>code</code></li>"
+            "</ul>"
+            "</div>",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
