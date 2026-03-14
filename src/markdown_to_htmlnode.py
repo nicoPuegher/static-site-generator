@@ -1,5 +1,6 @@
 from markdown_to_blocks import markdown_to_blocks
 from parentnode import ParentNode
+from leafnode import LeafNode
 from textnode import text_node_to_html_node
 from text_to_textnodes import text_to_textnodes
 
@@ -30,6 +31,14 @@ def markdown_to_html_node(markdown):
                     _text_to_children(text),
                 )
             )
+
+        elif block_type == "code":
+            code_content = block.strip("`")
+            if code_content.startswith("\n"):
+                code_content = code_content[1:]
+
+            code_node = LeafNode("code", code_content)
+            children.append(ParentNode("pre", [code_node]))
 
     return ParentNode("div", children)
 
