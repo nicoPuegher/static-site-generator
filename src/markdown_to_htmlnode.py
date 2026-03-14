@@ -50,6 +50,13 @@ def markdown_to_html_node(markdown):
                 )
             )
 
+        elif block_type == "unordered_list":
+            items = []
+            for line in block.split("\n"):
+                item_text = line.lstrip("- ").strip()
+                items.append(ParentNode("li", _text_to_children(item_text)))
+            children.append(ParentNode("ul", items))
+
     return ParentNode("div", children)
 
 
