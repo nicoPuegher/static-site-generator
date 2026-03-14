@@ -1,9 +1,27 @@
+from markdown_to_blocks import markdown_to_blocks
+from parentnode import ParentNode
 from textnode import text_node_to_html_node
 from text_to_textnodes import text_to_textnodes
 
 
 def markdown_to_html_node(markdown):
-    pass
+    blocks = markdown_to_blocks(markdown)
+
+    children = []
+
+    for block in blocks:
+        block_type = _block_type(block)
+
+        if block_type == "paragraph":
+            text = " ".join(block.split())
+            children.append(
+                ParentNode(
+                    "p",
+                    _text_to_children(text),
+                )
+            )
+
+    return ParentNode("div", children)
 
 
 def _text_to_children(text):
