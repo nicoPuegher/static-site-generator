@@ -64,6 +64,9 @@ def markdown_to_html_node(markdown):
                 items.append(ParentNode("li", _text_to_children(item_text)))
             children.append(ParentNode("ol", items))
 
+        else:
+            raise ValueError("Invalid block type")
+
     return ParentNode("div", children)
 
 
