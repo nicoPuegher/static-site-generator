@@ -1,10 +1,14 @@
 import os
 import shutil
 
+from generate_page import generate_page
+
 
 def main():
     print("Copying static files to public directory...")
     copy_static("static", "public")
+
+    generate_page("content/index.md", "template.html", "public/index.html")
 
 
 def copy_static(src, dest):
