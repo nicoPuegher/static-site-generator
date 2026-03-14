@@ -1,2 +1,5 @@
+# Generated site output
+public/
+
 # Python-generated files
 __pycache__/
