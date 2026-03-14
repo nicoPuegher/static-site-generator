@@ -40,6 +40,16 @@ def markdown_to_html_node(markdown):
             code_node = LeafNode("code", code_content)
             children.append(ParentNode("pre", [code_node]))
 
+        elif block_type == "quote":
+            lines = block.split("\n")
+            cleaned = "\n".join(line.lstrip("> ").rstrip() for line in lines)
+            children.append(
+                ParentNode(
+                    "blockquote",
+                    _text_to_children(cleaned),
+                )
+            )
+
     return ParentNode("div", children)
 
 
