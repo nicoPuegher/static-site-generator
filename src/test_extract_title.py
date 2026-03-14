@@ -11,6 +11,11 @@ class TestExtractTitle(unittest.TestCase):
         md = "#    Hello World   "
         self.assertEqual(extract_title(md), "Hello World")
 
+    def test_no_title(self):
+        md = "## Subtitle only"
+        with self.assertRaises(Exception):
+            extract_title(md)
+
 
 if __name__ == "__main__":
     unittest.main()
