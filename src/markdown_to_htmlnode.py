@@ -21,6 +21,16 @@ def markdown_to_html_node(markdown):
                 )
             )
 
+        elif block_type == "heading":
+            level = len(block.split(" ")[0])
+            text = block[level + 1 :]
+            children.append(
+                ParentNode(
+                    f"h{level}",
+                    _text_to_children(text),
+                )
+            )
+
     return ParentNode("div", children)
 
 
