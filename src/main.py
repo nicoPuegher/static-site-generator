@@ -1,9 +1,19 @@
-from textnode import TextNode
+import os
+import shutil
 
 
 def main():
-    node = TextNode("This is some anchor text", "LINK", "www.google.com")
-    print(node)
+    print("Copying static files to public directory...")
+    copy_static("static", "public")
+
+
+def copy_static(src, dest):
+    if os.path.exists(dest):
+        shutil.rmtree(dest)
+
+    os.mkdir(dest)
+
+    copy_recursive(src, dest)
 
 
 def copy_recursive(src, dest):
